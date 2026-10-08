@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner<Enemy>
 {
+    [SerializeField] private TargetCharacter _target;
     [SerializeField] private float _spawnDelay;
     [SerializeField] private int _maxEnemyCount;
     [SerializeField] private int _currentEnemyCount;
@@ -19,7 +20,7 @@ public class EnemySpawner : Spawner<Enemy>
     override protected Enemy CreateInSpawnPoint()
     {
         Enemy createdEnemy = base.CreateInSpawnPoint();
-        createdEnemy.SetDirection(ChooseDirection());
+        createdEnemy.Initialize(_target);
         _currentEnemyCount++;
 
         return createdEnemy;

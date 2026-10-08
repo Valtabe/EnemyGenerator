@@ -8,4 +8,9 @@ public class Mover : MonoBehaviour
     {
         transform.Translate(direction * _speed * Time.deltaTime);
     }
+
+    public void MoveToTarget(Vector3 target)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+    }
 }
